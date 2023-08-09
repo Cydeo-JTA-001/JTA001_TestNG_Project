@@ -25,7 +25,7 @@ public abstract class TestBase {
     public void setUp(){
         driver = Driver.get();//Driver.get() gets browser info from ConfigurationReader.get("browser");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         actions = new Actions(driver);
 
         driver.get(ConfigurationReader.get("url2"));//>>After todays class since we r gonna open the same project page, we put this line into TestBase

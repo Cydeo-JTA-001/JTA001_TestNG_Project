@@ -2,6 +2,7 @@ package com.cydeo.tests.day01_TestNG_DropDown;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -39,6 +40,10 @@ public class DropDownPractice {
 
         driver.get("https://practice.cydeo.com/dropdown");
     }
+    @AfterMethod
+    public void teardown(){
+        driver.quit();
+    }
 
     @Test
     public void simpleDropDownTest() {
@@ -58,10 +63,35 @@ public class DropDownPractice {
 
     }
 
-    @AfterMethod
-    public void teardown(){
-        driver.quit();
+    //TC #6: Selecting date on dropdown and verifying
+    //Open Chrome browser---it is already inside @BeforeMethod
+    //Go to https://practice.cydeo.com/dropdown ---it is already inside @BeforeMethod
+    //Select “December 1st, 1933” and verify it is selected.
+    //Select year using : visible text
+    //Select month using : value attribute
+    //Select day using : index number
+
+    @Test
+    public void dateDropdown(){
+        //Select “December 1st, 1933” and verify it is selected.
+        //Select year using : visible text
+        //Select month using : value attribute
+        //Select day using : index number
+        Select year=new Select(driver.findElement(By.xpath("//select[@id='year']")));
+        Select month=new Select(driver.findElement(By.xpath("//select[@id='month']")));
+        Select day=new Select(driver.findElement(By.xpath("//select[@id='day']")));
+        year.selectByVisibleText("1933");
+        month.selectByValue("11");
+        day.selectByIndex(0);
+        // Verification-- with assert methods
+        //Assert.assertEqual()    Assert.assertTrue()
+
+        Assert.assertTrue(year.getFirstSelectedOption().getText().equals("1933"));
+        Assert.assertEquals(month.getFirstSelectedOption().getText(),"December");
+        Assert.assertEquals(day.getFirstSelectedOption().getText(),"1");
     }
+
+
 
 
 }
