@@ -62,7 +62,6 @@ public class DropDownPractice {
         Assert.assertEquals(stateDropDown.getFirstSelectedOption().getText(),expectedValueForStateDropDown,"expected state does not meet");
 
     }
-
     //TC #6: Selecting date on dropdown and verifying
     //Open Chrome browser---it is already inside @BeforeMethod
     //Go to https://practice.cydeo.com/dropdown ---it is already inside @BeforeMethod
@@ -70,7 +69,6 @@ public class DropDownPractice {
     //Select year using : visible text
     //Select month using : value attribute
     //Select day using : index number
-
     @Test
     public void dateDropdown(){
         //Select “December 1st, 1933” and verify it is selected.
@@ -90,8 +88,4 @@ public class DropDownPractice {
         Assert.assertEquals(month.getFirstSelectedOption().getText(),"December");
         Assert.assertEquals(day.getFirstSelectedOption().getText(),"1");
     }
-
-
-
-
 }
